@@ -12,12 +12,24 @@ const NumberList = () => {
     }
   }
 
+  const columns = [];
+  const itemsPerColumn = 50;
+
+  for (let i = 0; i < numbers.length; i += itemsPerColumn) {
+    const columnItems = numbers.slice(i, i + itemsPerColumn);
+    columns.push(columnItems);
+  }
+
   return (
-    <ul>
-      {numbers.map((number, index) => (
-        <li key={index}>{number}</li>
+    <div style={{ display: 'flex' }}>
+      {columns.map((column, columnIndex) => (
+        <ul key={columnIndex} style={{ listStyle: 'none', margin: '20px' }}>
+          {column.map((number, index) => (
+            <li key={index}>{number}</li>
+          ))}
+        </ul>
       ))}
-    </ul>
+    </div>
   );
 };
 
