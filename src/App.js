@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
+const NumberList = () => {
+  const numbers = [];
+
+  for (let i = 1; i <= 200; i++) {
+    // Check if the number is a multiple of 7 or ends with 7
+    if (i % 7 === 0 || i.toString().endsWith('7')) {
+      numbers.push('boltz');
+    } else {
+      numbers.push(i);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ul>
+      {numbers.map((number, index) => (
+        <li key={index}>{number}</li>
+      ))}
+    </ul>
+  );
+};
+
+const App = () => {
+  return (
+    <div>
+      <h1>Number List</h1>
+      <NumberList />
     </div>
   );
-}
+};
 
 export default App;
