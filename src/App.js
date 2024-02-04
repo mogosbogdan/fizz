@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import { Drawer } from "@mui/material";
+import { SwipeableDrawer } from "@mui/material";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -14,11 +14,16 @@ function App() {
       <div className="App">
         <button onClick={handleClick}>Click me</button>
         <>
-          <Drawer anchor={"bottom"} open={open} onClose={() => setOpen(false)}>
+          <SwipeableDrawer
+            anchor={"bottom"}
+            open={open}
+            onClose={() => setOpen(false)}
+            onOpen={() => setOpen(true)}
+          >
             <div style={{ height: "400px", textAlign: "center" }}>
               <button onClick={() => setOpen(false)}>close</button>
             </div>
-          </Drawer>
+          </SwipeableDrawer>
         </>
       </div>
     </>
